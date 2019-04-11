@@ -8,7 +8,17 @@ import os
 from geometry_msgs.msg import PoseStamped
 
 def callback(data):
-    rospy.loginfo(rospy.get_caller_id() + 'I heard: \n %s', data.data)
+    x = data.pose.position.x
+    y = data.pose.position.y
+    z = data.pose.position.z
+
+    q0 = data.pose.orientation.x
+    q1 = data.pose.orientation.y
+    q2 = data.pose.orientation.z
+    q3 = data.pose.orientation.w
+
+    rospy.loginfo([(x, y, z), (q0, q1, q2, q3)])
+
 
 def listener():
     master = rospy.get_master()
