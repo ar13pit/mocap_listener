@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mocap_listener</name>
+  <version>0.1.0</version>
+  <description>This package is a template for geometry listener which can be used with Optitrack, VICON etc.</description>
+
+  <maintainer email="ar13pit@gmail.com">Arpit Aggarwal</maintainer>
+
+  <license>BSD</license>
+
+  <url type="bugtracker">https://github.com/ar13pit/mocap_listener/issues</url>
+  <url type="repository">https://github.com/ar13pit/mocap_listener</url>
+  <author>Arpit Aggarwal</author>
+
+  <buildtool_depend >catkin</buildtool_depend>
+
+  <depend>geometry_msgs</depend>
+  <depend>mocap_optitrack</depend>
+  <depend>rospy</depend>
+
+</package>
