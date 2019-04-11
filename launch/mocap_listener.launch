@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="mocap_listener" pkg="mocap_listener" type="mocap_listener.py" output="screen"/>
+</launch>
