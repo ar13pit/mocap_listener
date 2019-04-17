@@ -18,6 +18,8 @@ def callback(data, rate):
     q3 = data.pose.orientation.w
 
     rospy.loginfo([(x, y, z), (q0, q1, q2, q3)])
+
+    # This statement is required to maintain the rate of the subscriber
     rate.sleep()
 
 def listener():
@@ -31,6 +33,7 @@ def listener():
     rospy.init_node('listener', anonymous=True)
     rate = rospy.Rate(1)
 
+    # queue_size=1 ensures that the latest available message is read
     rospy.Subscriber('/mocap_node/Robot_1/pose', PoseStamped, callback, rate, queue_size=1)
 
     # NOTE: Do not change the below lines
