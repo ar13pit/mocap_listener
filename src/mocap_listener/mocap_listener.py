@@ -31,7 +31,7 @@ def listener():
     # name for our 'listener' node so that multiple listeners can
     # run simultaneously.
     rospy.init_node('listener', anonymous=True)
-    rate = rospy.Rate(1)
+    rate = rospy.Rate(rospy.get_param("~rate"))
 
     # queue_size=1 ensures that the latest available message is read
     rospy.Subscriber('/mocap_node/Robot_1/pose', PoseStamped, callback, rate, queue_size=1)
