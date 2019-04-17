@@ -1,4 +1,10 @@
 <?xml version="1.0"?>
 <launch>
+
+    <!-- Include mocap_optitrack package -->
+    <include file="$(find mocap_optitrack)/launch/mocap.launch">
+        <arg name="mocap_config_file" value="$(find mocap_listener)/config/mocap.yaml"/>
+    </include>
+
   <node name="mocap_listener" pkg="mocap_listener" type="mocap_listener.py" output="screen"/>
 </launch>
