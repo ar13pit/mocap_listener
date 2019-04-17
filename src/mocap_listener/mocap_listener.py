@@ -7,7 +7,7 @@ import rospy
 import os
 from geometry_msgs.msg import PoseStamped
 
-def callback(data):
+def callback(data, rate):
     x = data.pose.position.x
     y = data.pose.position.y
     z = data.pose.position.z
@@ -18,7 +18,7 @@ def callback(data):
     q3 = data.pose.orientation.w
 
     rospy.loginfo([(x, y, z), (q0, q1, q2, q3)])
-
+    rate.sleep()
 
 def listener():
     master = rospy.get_master()
@@ -29,13 +29,12 @@ def listener():
     # name for our 'listener' node so that multiple listeners can
     # run simultaneously.
     rospy.init_node('listener', anonymous=True)
+    rate = rospy.Rate(1)
 
-    rospy.Subscriber('/mocap_node/Robot_1/pose', PoseStamped, callback)
+    rospy.Subscriber('/mocap_node/Robot_1/pose', PoseStamped, callback, rate, queue_size=1)
 
-    # spin() simply keeps python from exiting until this node is stopped
-    #rospy.spin()
-
-    # Implementation of spin() with additional check that ros master exists
+    # NOTE: Do not change the below lines
+    # Implementation of rospy.spin() with additional check that ros master exists
     if not rospy.core.is_initialized():
         raise rospy.exceptions.ROSInitException("client code must call rospy.init_node() first")
     rospy.core.logdebug("node[%s, %s] entering spin(), pid[%s]",
