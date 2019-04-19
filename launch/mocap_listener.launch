@@ -2,7 +2,7 @@
 <launch>
 
     <arg name="rate" default="20"/>
-    <arg name="motive_config" default="$(find mocap_listener)/config/mocap.yaml">
+    <arg name="motive_config" default="$(find mocap_listener)/config/mocap.yaml"/>
 
     <!-- Include mocap_optitrack package -->
     <include file="$(find mocap_optitrack)/launch/mocap.launch">
